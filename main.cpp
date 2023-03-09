@@ -29,8 +29,20 @@ int main ()	{
 
 cout << "EXIT generate" << endl;
 
+cout << "Rex Operation: " << rex.operation << endl;
+
+cout << "Rex Left Operand: " << rex.leftOperand << endl;
+cout << "Rex Left Operand: " << rex.leftOperand->knownRatio->top << endl;
+cout << "Rex Left Operand: " << rex.leftOperand->knownRatio->bottom << endl;
+
+cout << "Rex Right Operand: " << rex.rightOperand << endl;
+cout << "Rex Right Operand: " << rex.rightOperand->knownRatio->top << endl;
+cout << "Rex Right Operand: " << rex.rightOperand->knownRatio->bottom << endl;
+
+
+
 // showRatio(rex.knownRatio);
-showRex(rex.leftOperand);
+// showRex(rex.leftOperand);
 // showRex(rex.rightOperand);
 
 cout << "Onwards to evaluate" << endl;
@@ -135,6 +147,16 @@ cout << rex.operation << endl;
 cout << "operandsCount++" << endl;
 			operandsCount++;
 		} else {
+// 				Ratio ratio;
+// 				ratio.top = stoi(token[i]);
+// cout << stoi(token[i]) << endl;
+// 				ratio.bottom = 1;
+// 				RationalExpression rexKnown;
+// 				rexKnown.knownRatio = &ratio;
+// 				rexKnown.operation = "/";
+// 				rexKnown.leftOperand = NULL;
+// 				rexKnown.rightOperand = NULL;
+			if (operandsCount == 0)	{
 				Ratio ratio;
 				ratio.top = stoi(token[i]);
 cout << stoi(token[i]) << endl;
@@ -144,12 +166,36 @@ cout << stoi(token[i]) << endl;
 				rexKnown.operation = "/";
 				rexKnown.leftOperand = NULL;
 				rexKnown.rightOperand = NULL;
-			if (operandsCount == 0)	{
+// 				rex.leftOperand->knownRatio->top = rexKnown.knownRatio->top;
+// 				rex.leftOperand->knownRatio->bottom = rexKnown.knownRatio->bottom;
+// cout << "top and bottom" << endl;
+// 				rex.leftOperand->operation = rexKnown.operation;
+// 				rex.leftOperand->leftOperand = rexKnown.leftOperand;
+// 				rex.leftOperand->rightOperand = rexKnown.rightOperand;
 				rex.leftOperand = &rexKnown;
 cout << "rex.leftOperand = " << rexKnown.knownRatio->top << endl;
+cout << "rex.leftOperand = " << &rexKnown << endl;
+
+
 			} else if (operandsCount == 1)	{
+				Ratio ratio;
+				ratio.top = stoi(token[i]);
+cout << stoi(token[i]) << endl;
+				ratio.bottom = 1;
+				RationalExpression rexKnown;
+				rexKnown.knownRatio = &ratio;
+				rexKnown.operation = "/";
+				rexKnown.leftOperand = NULL;
+				rexKnown.rightOperand = NULL;
+				// rex.rightOperand->knownRatio = rexKnown.knownRatio;
+				// rex.rightOperand->operation = rexKnown.operation;
+				// rex.rightOperand->leftOperand = rexKnown.leftOperand;
+				// rex.rightOperand->rightOperand = rexKnown.rightOperand;
 				rex.rightOperand = &rexKnown;
 cout << "rex.rightOperand = " << rexKnown.knownRatio->top << endl;
+cout << "rex.rightOperand = " << &rexKnown << endl;
+
+
 			}
 cout << "operandsCount++" << endl;
 			operandsCount++;
